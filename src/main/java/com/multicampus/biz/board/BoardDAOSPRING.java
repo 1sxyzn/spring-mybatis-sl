@@ -1,13 +1,16 @@
 package com.multicampus.biz.board;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 // 2. DAO(Data Access Object) 클래스
-//@Repository
-public class BoardDAOSPRING implements BoardDAO {
+@Repository
+public class BoardDAOSPRING {
 	
 	@Autowired
 	private JdbcTemplate spring;

@@ -6,9 +6,8 @@ import org.springframework.stereotype.Component;
 @Component("tv")
 public class LgTV implements TV {
 	
-	// 1. Speaker 타입의 객체가 반드시 메모리에 존재해야 하낟.
-	// 2. Speaker 타입의 객체는 유일해야 한다.
-	
+	// 1. Speaker 타입의 객체가 반드시 메모리에 존재해야 한다.
+	// 2. Speaker 타입의 객체는 유일해야 한다. 	
 	@Autowired // type injection
 	private Speaker speaker;
 	

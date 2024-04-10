@@ -1,5 +1,6 @@
 package polymorphism3;
 
+//@Component
 public class SamsungTV implements TV {
 	private int price;
 	

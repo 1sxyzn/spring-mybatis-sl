@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 // 4. Service 구현 클래스
 @Service("userService")
 public class UserServiceImpl implements UserService {
-	
+
 	@Autowired
 	private UserDAO userDAO;
-
+	
 	public void insertUser(UserVO vo) {
 		userDAO.insertUser(vo);
 	}

@@ -8,9 +8,7 @@
 </head>
 <body>
 <center>
-<h1>
-안녕 채규태~
-</h1>
+<h1>아녕 채규태^^</h1>
 </center>
 </body>
 </html>

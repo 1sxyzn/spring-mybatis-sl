@@ -17,16 +17,14 @@ public class GoogleTV implements TV {
 		this.speaker = speaker;
 		this.price = price;
 	}
-	
 	public void setSpeaker(Speaker speaker) {
-		System.out.println("---> setSpeaker 호출");
+		System.out.println("---> setSpeaker() 호출");
 		this.speaker = speaker;
 	}
 	public void setPrice(int price) {
-		System.out.println("---> setPrice 호출");
+		System.out.println("---> setPrice() 호출");
 		this.price = price;
 	}
-	
 	public void powerOn() {
 		System.out.println("GoogleTV---전원 켠다." + price);
 	}

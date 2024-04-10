@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- Spring 컨테이너가 생성할 객체에 해당하는 class를 등록한다. -->
+	<!-- <bean id="tv" class="polymorphism3.SamsungTV"
+	init-method="멤버변수초기화" destroy-method="자원해제" lazy-init="false"></bean> -->
+	
+	<!-- context 태그 추가를 통해 컨테이너에게 새로운 작업을 지시할 수 있음 -->
+	
+
+	<bean id="speaker" class="polymorphism3.SonySpeaker"></bean>
+	
+	<bean id="tv" class="polymorphism3.GoogleTV">
+	<!-- <constructor-arg ref="speaker"></constructor-arg>
+		<constructor-arg value="150000"></constructor-arg> -->
+		<!-- 기본 생성자가 아닌 매개변수가 있는 생성자 호출
+		생성자 injection = 멤버변수를 생성자를 통해 초기화 함 -->
+		
+		
+		<property name="speaker" ref="speaker"></property>
+		<!-- 생성자가 했던 것을 setter method가 함
+		name은 setter 메소드. 근데 setSpeaker가 아니라 변수 명을 그대로 써야함. ref는 값-->
+		<property name="price" value="140000"></property>
+	</bean>
+	
+	<!-- 
+	<bean id="speaker" class="polymorphism3.SonySpeaker"></bean>
+	<bean id="tv" class="polymorphism3.GoogleTV" p:price="120000" p:speaker-ref="speaker"></bean>
+	-->
+	
+	<bean id="collection" class="polymorphism3.CollectionBean">
+		<property name="addressList">
+			<props>
+				<prop key="둘리">쌍문동</prop>
+				<prop key="도우너">방학동</prop>
+				<prop key="또치">길동</prop>
+			</props>
+		</property>
+	</bean>
+	
+</beans>

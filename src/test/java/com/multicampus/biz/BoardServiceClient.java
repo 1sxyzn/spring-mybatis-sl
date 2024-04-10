@@ -16,7 +16,7 @@ public class BoardServiceClient {
 		BoardService boardService = (BoardService) container.getBean("boardService");
 		
 		BoardVO vo = new BoardVO();
-		vo.setSeq(0);
+		vo.setSeq(101);
 		vo.setTitle("새글 등록 테스트");
 		vo.setWriter("테스터");
 		vo.setContent("잘 되어야할텐데...");

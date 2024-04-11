@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class LogAdvice {
 	
 	@Before("BoardPointcut.allPointcut()")
-	public void pringLog(JoinPoint jp) {
+	public void printLog(JoinPoint jp) {
 		String method = jp.getSignature().getName();
 		Object[] args = jp.getArgs();
 		

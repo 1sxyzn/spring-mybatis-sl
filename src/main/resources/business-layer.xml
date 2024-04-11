@@ -8,9 +8,12 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
                            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
                            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
-                           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd"> <!-- 무결성 유지를 위해 tx 추가 -->
+                           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<context:component-scan base-package="com.multicampus.biz"/>
+	
+	<!-- 실제로 사용할 DAO 클래스를 등록한다. -->
+	<bean class="com.multicampus.biz.board.BoardDAOSPRING"/>
 	
 	<aop:aspectj-autoproxy/>
 	
@@ -33,17 +36,15 @@
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
 	
-	<!-- 트랜잭션 관리 어드바이스는, 어드바이스 전용 태그 설정을 통해 사용 가능 -->
-	<!-- 어드바이스가 동작하려면 포인트 컷이 있어야 함 / 그리고 어스펙트 설정을 통해 포인트컷과 어드바이스를 연결시켜야 함 -->
 	<tx:advice id="txAdvice" transaction-manager="txManager">
 		<tx:attributes>
-			<tx:method name="*" rollback-for="Exception"/> <!-- 모든 메소드에서, 예외가 발생하면 롤백을 해라. 커밋은 예외가 발생하지 않으면 자동으로 됨 -->
+			<tx:method name="*" rollback-for="Exception"/>
 		</tx:attributes>
 	</tx:advice>
 	
 	<aop:config>
 		<aop:pointcut id="txPointcut" expression="execution(* com.multicampus.biz..*Impl.*(..))"/>
-		<!-- aspect를 쓰려면 method 명을 알아야하는데, 트랜잭션은 우리가 만든게 아니므로 메소드 명을 알 수 없음. 그래서 어드바이서를 씀 -->
+
 		<aop:advisor pointcut-ref="txPointcut" advice-ref="txAdvice"/>
 	</aop:config>
 

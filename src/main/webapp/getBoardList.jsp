@@ -1,15 +1,13 @@
-<%@page import="java.util.List"%>
-<%@page import="com.multicampus.biz.board.BoardDAOJDBC"%>
-<%@page import="com.multicampus.biz.board.BoardDAO"%>
-<%@page import="com.multicampus.biz.board.BoardVO"%>
 <%@page contentType="text/html; charset=UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<%
-	// 1. Controller(Servlet)가 Model(DAO)을 이용하여 검색한 데이터를 꺼낸다.
-	List<BoardVO> boardList = (List) session.getAttribute("boardList");
-
-	// 2. 응답 화면 구성
-%>
+<!-- 
+	EL(Expression Language)
+	request, session, application 같은 내장 객체에 등록된 데이터에 접근하는 표현 언어
+	
+	JSTL(JSP Standard Tag Library)
+	JSP 파일에서 if, for, switch 등과 같은 자바 코드를 대체하는 표준 태그
+-->
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -48,15 +46,15 @@
 	<th bgcolor="orange" width="100">조회수</th>
 </tr>
 
-<% for(BoardVO board : boardList) { %>
+<c:forEach var="board" items="${boardList }">
 <tr>
-	<td><%= board.getSeq() %></td>
-	<td align="left"><a href="getBoard.do?seq=<%= board.getSeq() %>"><%= board.getTitle() %></a></td>
-	<td><%= board.getWriter() %></td>
-	<td><%= board.getRegDate() %></td>
-	<td><%= board.getCnt() %></td>
+	<td>${board.seq }</td>
+	<td align="left"><a href="getBoard.do?seq=${board.seq }">${board.title }</a></td>
+	<td>${board.writer }</td>
+	<td>${board.regDate }</td>
+	<td>${board.cnt }</td>
 </tr>
-<% } %>
+</c:forEach>
 
 </table>
 <br>

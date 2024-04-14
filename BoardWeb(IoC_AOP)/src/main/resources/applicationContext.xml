@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- 컴포넌트 스캔 설정 
+		@Component 	: 유지보수 과정에서 변경되지 않는 객체
+		bean 등록	: 유지보수 과정에서 자주 변경되는 객체
+	-->
+	<context:component-scan base-package="polymorphism3"/>
+	
+	<bean class="polymorphism3.AppleSpeaker"></bean>
+
+
+	<!-- Spring 컨테이너가 생성할 객체에 해당하는 class를 등록한다. 
+	<bean id="tv" 
+	      class="polymorphism3.SamsungTV"
+	      init-method="멤버변수초기화"
+	      destroy-method="자원해제"
+	      lazy-init="false"></bean>
+	
+	<bean id="speaker" class="polymorphism3.SonySpeaker"></bean>
+	
+	<bean id="tv" class="polymorphism3.GoogleTV">		
+		<property name="speaker" ref="speaker"></property>
+		<property name="price" value="1400000"></property>
+	</bean>
+
+		
+	<bean id="speaker" class="polymorphism3.AppleSpeaker"></bean>
+	
+	<bean id="tv" class="polymorphism3.GoogleTV" p:price="1200000" p:speaker-ref="speaker"></bean>
+
+	<bean id="collection" class="polymorphism3.CollectionBean">
+		<property name="addressList">
+			<props>
+				<prop key="둘리">쌍문동</prop>
+				<prop key="도우너">방학동</prop>
+				<prop key="또치">길동</prop>
+			</props>
+		</property>
+	</bean>
+	-->
+	
+</beans>
+
+
+
+
